@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24.000000" height="24.000000" viewBox="0 0 24 24" fill="none">
+	<desc>
+			Created with Pixso.
+	</desc>
+	<defs>
+		<clipPath id="clip109_3763">
+			<rect id="Frame 1948753673" width="24.000000" height="24.000000" fill="white" fill-opacity="0"/>
+		</clipPath>
+	</defs>
+	<g clip-path="url(#clip109_3763)">
+		<path id="Vector 2475" d="M5 18C5 18.5522 5.44775 19 6 19L18 19C18.5522 19 19 18.5522 19 18L19 10.2783C19 9.72607 18.5522 9.27832 18 9.27832L16 9.27832L8 9.27832L6 9.27832C5.44775 9.27832 5 9.72607 5 10.2783L5 18ZM8 9.27832L8 7.03809C8 2 16 1.96191 16 7L16 9.27832" stroke="#000000" stroke-opacity="1.000000" stroke-width="1.600000"/>
+	</g>
+</svg>
