@@ -1,11 +1,11 @@
 import { IconButton, LinearProgress, Modal } from "@mui/material";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import BaseInput from "../formItems/BaseInput";
 import PrimerButton from "../PrimerButton";
 import ImageInput from "../formItems/ImageInput";
-import { usePost } from "../../api";
+import { usePut } from "../../api";
 import { useDispatch } from "react-redux";
-import { addMenu } from "../../store/reducer/menus";
+import { editMenu } from "../../store/reducer/menus";
 
 const style = {
   position: "absolute",
@@ -14,32 +14,26 @@ const style = {
   transform: "translate(-50%, -50%)",
 };
 
-function AddCategory() {
+function EditMenu({open, setOpen, menu}) {
   const dispatch = useDispatch();
 
-  const [name, setName] = useState("");
+  const [name, setName] = useState(menu.name);
   const [photo, setPhoto] = useState("");
 
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
-  const [open, setOpen] = useState(false);
 
-  useEffect(()=>{
-    setName("")
-    setPhoto("")
-  }, [open])
-
-  function addMenuFunc(e) {
+  function editMenuFunc(e) {
     e.preventDefault();
     setLoading(true);
     // eslint-disable-next-line react-hooks/rules-of-hooks
-    usePost("/categories", {
+    usePut(`/categories/${menu.id}`, {
       name,
       photo: photo ? photo : null,
     })
       .then(({ data }) => {
         console.log(data);
-        dispatch(addMenu(data));
+        dispatch(editMenu(data));
         setLoading(false);
         setOpen(false);
       })
@@ -52,7 +46,6 @@ function AddCategory() {
 
   return (
     <>
-      <PrimerButton onClick={() => setOpen(true)}>+ Menu qo`shish</PrimerButton>
       <Modal
         open={open}
         onClose={() => setOpen(false)}
@@ -65,7 +58,7 @@ function AddCategory() {
         >
           <div className="py-6 px-5">
             <div className="flex justify-between mb-6">
-              <div className="text-xl font-semibold">Menu qo`shish</div>
+              <div className="text-xl font-semibold">Menu taxrirlash</div>
               <IconButton onClick={() => setOpen(false)} sx={{ p: "5px" }}>
                 <img
                   src="/src/assets/x.svg"
@@ -74,7 +67,7 @@ function AddCategory() {
                 />
               </IconButton>
             </div>
-            <form onSubmit={addMenuFunc}>
+            <form onSubmit={editMenuFunc}>
               <div className="grid grid-cols-1 gap-4">
                 <ImageInput />
                 <BaseInput
@@ -87,7 +80,7 @@ function AddCategory() {
               </div>
               <div className="pt-6">
                 <PrimerButton disabled={loading} type="submit">
-                  Qo`shish
+                  Taxrirlash
                 </PrimerButton>
               </div>
             </form>
@@ -104,4 +97,4 @@ function AddCategory() {
   );
 }
 
-export default AddCategory;
+export default EditMenu;

@@ -3,11 +3,12 @@ import PasswordInput from "../components/formItems/PasswordInput";
 import BaseInput from "../components/formItems/BaseInput";
 import PrimerButton from "../components/PrimerButton";
 import { useState } from "react";
-import { usePost } from "../api";
+import { useGet, usePost } from "../api";
 import { LinearProgress, Snackbar } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { removeRole } from "../store/reducer/role";
+import { putAdmin } from "../store/reducer/admin";
 
 function SignIn() {
   const navigate = useNavigate();
@@ -27,8 +28,15 @@ function SignIn() {
       .then(({ data }) => {
         dispatch(removeRole());
         localStorage.setItem("token", data);
-        setLoading(false);
-        navigate("/");
+        // eslint-disable-next-line react-hooks/rules-of-hooks
+        useGet("/auth/me")
+          .then(({ data }) => {
+            console.log(data);
+            dispatch(putAdmin(data))
+            setLoading(false);
+            navigate("/");
+          })
+          .catch((e) => console.log(e));
       })
       .catch((e) => {
         console.log(e.message);

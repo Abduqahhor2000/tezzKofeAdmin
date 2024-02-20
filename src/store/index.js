@@ -7,7 +7,7 @@ import storage from 'redux-persist/lib/storage';
 const persistConfig = { 
   key: 'root',
   storage,
-  whitelist: ['role', 'types', 'employees'], // Specify the items you want to persist
+  whitelist: ['role', 'types', 'employees', 'admin', 'menus'], // Specify the items you want to persist
 };
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

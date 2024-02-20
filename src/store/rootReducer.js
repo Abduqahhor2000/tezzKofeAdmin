@@ -3,6 +3,9 @@ import employeesReducer from './reducer/employees';
 import roleReducer from './reducer/role'
 import typesReducer from './reducer/types'
 import tablesReducer from "./reducer/tables"
+import menusReducer from "./reducer/menus"
+import productsReducer from "./reducer/products"
+import adminReducer from "./reducer/admin"
 
 // rootReducer.js
 import { combineReducers } from 'redux';
@@ -13,6 +16,9 @@ const rootReducer = combineReducers({
   types: typesReducer,
   employees: employeesReducer,
   tables: tablesReducer,
+  menus: menusReducer,
+  products: productsReducer,
+  admin: adminReducer,
   // Add more reducers as needed
 });
 

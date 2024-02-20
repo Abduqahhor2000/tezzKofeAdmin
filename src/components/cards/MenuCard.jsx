@@ -1,11 +1,19 @@
+import { useState } from "react";
 import { Pen, Trash } from "../PenAndTrash";
 import ThreeDots from "../ThreeDots";
+import DeleteMenu from "../modals/DeleteMenuModal";
+import EditMenu from "../modals/EditMenuModal";
 
-function MenuCard() {
+function MenuCard({ item }) {
+  const [delOpen, setDelOpen] = useState();
+  const [editOpen, setEditOpen] = useState();
+
   function salom() {
+    setEditOpen(true)
     console.log("salom");
   }
   function qalay() {
+    setDelOpen(true);
     console.log("qalay");
   }
   return (
@@ -17,7 +25,7 @@ function MenuCard() {
           alt=""
         />
         <div className="pl-3 text-sm flex-grow">
-          <div className="pb-1 font-semibold">Oshlar</div>
+          <div className="pb-1 font-semibold">{item.name}</div>
           <div className="text-gray-400 font-medium">Taomlar</div>
         </div>
         <div className="relative -top-2.5 -right-4">
@@ -25,16 +33,20 @@ function MenuCard() {
             data={[
               {
                 func: salom,
-                content: <Pen/>,
+                content: <Pen />,
               },
               {
                 func: qalay,
-                content: <Trash/>,
+                content: <Trash />,
               },
             ]}
           />
         </div>
       </div>
+      <DeleteMenu open={delOpen} setOpen={setDelOpen} id={item.id} />
+      {editOpen ? (
+        <EditMenu open={editOpen} setOpen={setEditOpen} menu={item} />
+      ) : null}
     </>
   );
 }
