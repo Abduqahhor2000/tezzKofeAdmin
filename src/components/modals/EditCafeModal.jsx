@@ -1,5 +1,5 @@
 import { IconButton, LinearProgress, Snackbar } from "@mui/material";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import BaseInput from "../formItems/BaseInput";
 import PrimerButton from "../PrimerButton";
 import ImageInput from "../formItems/ImageInput";

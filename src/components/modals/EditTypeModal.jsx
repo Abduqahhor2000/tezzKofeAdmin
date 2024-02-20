@@ -40,7 +40,7 @@ function EditType({ open, setOpen, type }) {
         <div className="w-[360px]  overflow-hidden bg-white rounded-xl">
           <div className="py-6 px-5">
             <div className="flex justify-between mb-6">
-              <div className="text-xl font-semibold">Kategoriya qo’shish</div>
+              <div className="text-xl font-semibold">Kategoriyani tahrirlash</div>
               <IconButton onClick={() => setOpen(false)} sx={{ p: "5px" }}>
                 <img
                   src="/src/assets/x.svg"
@@ -61,7 +61,7 @@ function EditType({ open, setOpen, type }) {
               </div>
               <div className="pt-6">
                 <PrimerButton disabled={loading} type="submit">
-                  Qo`shish
+                  Tahrirlash
                 </PrimerButton>
               </div>
             </form>

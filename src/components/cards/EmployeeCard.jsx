@@ -1,12 +1,20 @@
+import { useState } from "react";
 import { Pen, Trash } from "../PenAndTrash";
 import ThreeDots from "../ThreeDots";
+import DeleteEmployee from "../modals/DeleteEmployeeModal";
+import EditEmployee from "../modals/EditEmployeeModal";
 
-function EmployeeCard() {
+function EmployeeCard({item}) {
+  const [openDel, setOpenDel] = useState(false)
+  const [openEdit, setOpenEdit] = useState(false)
+
   function salom() {
     console.log("salom");
+    setOpenEdit(true)
   }
   function qalay() {
     console.log("qalay");
+    setOpenDel(true)
   }
   return (
     <>
@@ -17,8 +25,8 @@ function EmployeeCard() {
           alt=""
         />
         <div className="pl-3 text-sm flex-grow">
-          <div className="pb-1 font-semibold">Davlatov Qudrat</div>
-          <div className="text-gray-400">Komil o’g’li</div>
+          <div className="pb-1 font-semibold">{item.firstName} {item.lastName}</div>
+          <div className="text-gray-400"></div>
         </div>
         <div className="relative -top-2.5 -right-4">
           <ThreeDots
@@ -35,6 +43,10 @@ function EmployeeCard() {
           />
         </div>
       </div>
+      <DeleteEmployee open={openDel} setOpen={setOpenDel} id={item?.id} />
+      {
+        openEdit ? <EditEmployee open={openEdit} setOpen={setOpenEdit} employee={item} /> : null
+      }
     </>
   );
 }

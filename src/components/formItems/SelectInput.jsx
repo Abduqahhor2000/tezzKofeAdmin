@@ -1,7 +1,8 @@
 import { FormControl, FormHelperText, InputAdornment, MenuItem } from "@mui/material";
 import Select from "@mui/material/Select";
 
-function SelectInput({label, ...props}) {
+function SelectInput({label, options=[], ...props}) {
+  console.log(options);
   return (
     <div>
       <FormControl required sx={{ minWidth: "100%" }}>
@@ -11,8 +12,6 @@ function SelectInput({label, ...props}) {
         <Select
           size="small"
           id="demo-simple-select-required"
-          //   value={age}
-          //   onChange={handleChange}
           className="!text-base !leading-5 py-0.5 !pl-2"
           startAdornment={
             <InputAdornment position="start" className="!text-base !leading-5 !text-black">
@@ -24,9 +23,11 @@ function SelectInput({label, ...props}) {
           <MenuItem value="" className="text-gray-400">
             None
           </MenuItem>
-          <MenuItem value={10}>Ten</MenuItem>
-          <MenuItem value={20}>Twenty</MenuItem>
-          <MenuItem value={30}>Thirty</MenuItem>
+          {
+            options.map((option, index)=>{
+              return <MenuItem key={index} value={option.value}>{option.label}</MenuItem>
+            })
+          }
         </Select>
       </FormControl>
     </div>

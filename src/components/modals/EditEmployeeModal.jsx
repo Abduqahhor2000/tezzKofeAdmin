@@ -1,12 +1,12 @@
 import { IconButton, LinearProgress, Modal } from "@mui/material";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import BaseInput from "../formItems/BaseInput";
 import PrimerButton from "../PrimerButton";
 import ImageInput from "../formItems/ImageInput";
 import PasswordInput from "../formItems/PasswordInput";
 import { useDispatch } from "react-redux";
-import { usePost } from "../../api";
-import { addEmployee } from "../../store/reducer/employees";
+import { usePut } from "../../api";
+import { editEmployee } from "../../store/reducer/employees";
 
 const style = {
   position: "absolute",
@@ -15,52 +15,35 @@ const style = {
   transform: "translate(-50%, -50%)",
 };
 
-function AddEmployee() {
+function EditEmployee({ open, setOpen, employee }) {
   const dispatch = useDispatch();
 
-  const [avatar, setAvatar] = useState("");
-  const [phone, setPhone] = useState("");
+  const [avatar, setAvatar] = useState(employee.avatar);
+  const [phone, setPhone] = useState(employee.phone);
   const [password, setPassword] = useState("");
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
+  const [firstName, setFirstName] = useState(employee.firstName);
+  const [lastName, setLastName] = useState(employee.lastName);
 
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [popap, setPopap] = useState(false);
 
-  const [open, setOpen] = useState(false);
-  const handleOpen = () => {
-    setOpen(true);
-  };
-  const handleClose = () => {
-    setOpen(false);
-  };
-
-  useEffect(() => {
-    setPassword("");
-    setAvatar("");
-    setError("");
-    setFirstName("");
-    setLastName("");
-    setPhone("");
-  }, [open]);
-
-  function addEmployeeFunc(e) {
+  function editEmployeeFunc(e) {
     e.preventDefault();
     setLoading(true);
     // eslint-disable-next-line react-hooks/rules-of-hooks
-    usePost("/waiters", {
+    usePut(`/waiters/${employee.id}`, {
       phone,
-      password,
       firstName,
       lastName,
       avatar: avatar ? avatar : null,
+      ...(password ? { password } : {}),
     })
       .then(({ data }) => {
         console.log(data);
+        dispatch(editEmployee({...employee, phone, firstName, lastName, avatar}));
         setLoading(false);
         setOpen(false);
-        dispatch(addEmployee(data));
       })
       .catch((e) => {
         console.log(e.message);
@@ -71,10 +54,9 @@ function AddEmployee() {
 
   return (
     <>
-      <PrimerButton onClick={handleOpen}>+ Hodim qo`shish</PrimerButton>
       <Modal
         open={open}
-        onClose={handleClose}
+        onClose={() => setOpen(false)}
         aria-labelledby="parent-modal-title"
         aria-describedby="parent-modal-description"
       >
@@ -84,8 +66,8 @@ function AddEmployee() {
         >
           <div className="py-6 px-5">
             <div className="flex justify-between mb-6">
-              <div className="text-xl font-semibold">Hodim qo`shish</div>
-              <IconButton onClick={handleClose} sx={{ p: "5px" }}>
+              <div className="text-xl font-semibold">Hodim tahrirlash</div>
+              <IconButton onClick={() => setOpen(false)} sx={{ p: "5px" }}>
                 <img
                   src="/src/assets/x.svg"
                   alt=""
@@ -93,7 +75,7 @@ function AddEmployee() {
                 />
               </IconButton>
             </div>
-            <form onSubmit={addEmployeeFunc}>
+            <form onSubmit={editEmployeeFunc}>
               <div className="grid grid-cols-1 gap-4">
                 <ImageInput />
                 <BaseInput
@@ -123,7 +105,7 @@ function AddEmployee() {
                 />
               </div>
               <div className="pt-6">
-                <PrimerButton disabled={loading} type="submit">Qo`shish</PrimerButton>
+                <PrimerButton disabled={loading} type="submit">Tahrirlash</PrimerButton>
               </div>
             </form>
           </div>
@@ -139,4 +121,4 @@ function AddEmployee() {
   );
 }
 
-export default AddEmployee;
+export default EditEmployee;

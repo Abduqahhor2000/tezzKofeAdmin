@@ -7,6 +7,7 @@ import Tables from "./pages/Tables";
 import Menus from "./pages/Menus";
 import Login from "./pages/Login";
 import { useSelector } from "react-redux";
+import TableMenegment from "./pages/TableMenegment";
 
 function App() {
     const role = useSelector(state=> state.role.role)
@@ -35,7 +36,7 @@ function App() {
     },
     {
       path: "/tables/type",
-      element: <Tables />,
+      element: <TableMenegment />,
     },
     {
       path: "/menus",

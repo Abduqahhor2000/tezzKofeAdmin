@@ -1,12 +1,12 @@
 import { IconButton, LinearProgress, Modal } from "@mui/material";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import BaseInput from "../formItems/BaseInput";
 import PrimerButton from "../PrimerButton";
 import SelectInput from "../formItems/SelectInput";
 import CheckBox from "../formItems/CheckBox";
 import { useDispatch, useSelector } from "react-redux";
-import { usePost } from "../../api";
-import { addTable } from "../../store/reducer/tables";
+import { usePut } from "../../api";
+import { editTable } from "../../store/reducer/tables";
 
 const style = {
   position: "absolute",
@@ -15,39 +15,31 @@ const style = {
   transform: "translate(-50%, -50%)",
 };
 
-function AddTable() {
+function EditTable({open, setOpen, table}) {
   const { employees, types } = useSelector((state) => state);
   const dispatch = useDispatch();
 
-  const [typeOfTable, setTypeOfTable] = useState("");
-  const [name, setName] = useState("");
-  const [waiter, setWaiter] = useState("");
+  const [typeOfTable, setTypeOfTable] = useState(table.typeOfTable);
+  const [name, setName] = useState(table.name);
+  const [waiter, setWaiter] = useState(table.waiter ? table.waiter : "");
   const [forAll, setForAll] = useState(false);
 
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
-  const [open, setOpen] = useState(false);
 
-  useEffect(() => {
-    setTypeOfTable("");
-    setName("");
-    setWaiter("");
-    setForAll(false);
-  }, [open]);
-
-  function addTableFunc(e) {
+  function editTableFunc(e) {
     e.preventDefault();
     setLoading(true);
 
     // eslint-disable-next-line react-hooks/rules-of-hooks
-    usePost("/tables", {
+    usePut(`/tables/${table._id}`, {
       typeOfTable,
       name,
       waiter: waiter && !forAll ? waiter : null,
     })
       .then(({ data }) => {
         console.log(data);
-        dispatch(addTable(data));
+        dispatch(editTable(data));
         setLoading(false);
         setOpen(false);
       })
@@ -60,7 +52,6 @@ function AddTable() {
 
   return (
     <>
-      <PrimerButton onClick={() => setOpen(true)}>+ Stol qo`shish</PrimerButton>
       <Modal
         open={open}
         onClose={() => setOpen(false)}
@@ -70,7 +61,7 @@ function AddTable() {
         <div style={{ ...style }} className="w-[360px] overflow-hidden bg-white rounded-xl">
           <div className="py-6 px-5">
             <div className="flex justify-between mb-6">
-              <div className="text-xl font-semibold">Stol qo`shish</div>
+              <div className="text-xl font-semibold">Stol taxrirlash</div>
               <IconButton onClick={() => setOpen(false)} sx={{ p: "5px" }}>
                 <img
                   src="/src/assets/x.svg"
@@ -79,7 +70,7 @@ function AddTable() {
                 />
               </IconButton>
             </div>
-            <form onSubmit={addTableFunc}>
+            <form onSubmit={editTableFunc}>
               <div className="grid grid-cols-1 gap-4">
                 <SelectInput
                   value={typeOfTable}
@@ -118,7 +109,7 @@ function AddTable() {
               </div>
               <div className="pt-6">
                 <PrimerButton disabled={loading} type="submit">
-                  Qo`shish
+                  Taxrirlash
                 </PrimerButton>
               </div>
             </form>
@@ -135,4 +126,4 @@ function AddTable() {
   );
 }
 
-export default AddTable;
+export default EditTable;
