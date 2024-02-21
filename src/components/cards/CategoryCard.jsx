@@ -18,11 +18,11 @@ function CategoryCard({item}) {
   }
   return (
     <>
-      <div className="bg-gray-100 p-4 flex rounded-lg">
+      <div className="bg-gray-100 h-24 p-4 flex rounded-lg">
         <div className="pl-3 text-sm flex-grow">
           <div className="pb-3 font-bold text-[32px] leading-8">{item.name}</div>
           <div className="text-gray-400 text-sm font-medium">
-            7 ta stol mavjud
+          
           </div>
         </div>
         <div className="relative -top-2.5 -right-4">

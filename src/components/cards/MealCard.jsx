@@ -2,11 +2,14 @@ import { useState } from "react";
 import { Pen, Trash } from "../PenAndTrash";
 import ThreeDots from "../ThreeDots";
 import DeleteProduct from "../modals/DeleteProductModal";
+import EditProduct from "../modals/EditProductModal";
 
 function MealCard({product}) {
-  const [delOpen, setDelOpen] = useState()
+  const [delOpen, setDelOpen] = useState(false)
+  const [editOpen, setEditOpen] = useState(false)
 
   function salom() {
+    setEditOpen(true)
     console.log("salom");
   }
   function qalay() {
@@ -42,6 +45,9 @@ function MealCard({product}) {
         </div>
       </div>
       <DeleteProduct open={delOpen} setOpen={setDelOpen} id={product._id}/>
+      {
+        editOpen ? <EditProduct open={editOpen} setOpen={setEditOpen} product={product}/> : null
+      }
     </>
   );
 }

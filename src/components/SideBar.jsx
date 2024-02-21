@@ -8,7 +8,7 @@ function SideBar() {
     <div className="py-8 px-3">
       <ItemMenu
         data={{
-          url: "/",
+          url: ["/", "/table_status"],
           text: "Home",
           svg: {
             active: "/src/assets/home_active.svg",
@@ -20,7 +20,7 @@ function SideBar() {
         <>
           <ItemMenu
             data={{
-              url: "/employees",
+              url: ["/employees"],
               text: "Hodimlar",
               svg: {
                 active: "/src/assets/employee_active.svg",
@@ -30,7 +30,7 @@ function SideBar() {
           />
           <ItemMenu
             data={{
-              url: "/tables",
+              url: ["/tables"],
               text: "Stollar",
               svg: {
                 active: "/src/assets/list_active.svg",
@@ -40,7 +40,7 @@ function SideBar() {
           />
           <ItemMenu
             data={{
-              url: "/menus",
+              url: ["/menus"],
               text: "Menu",
               svg: {
                 active: "/src/assets/menu_active.svg",

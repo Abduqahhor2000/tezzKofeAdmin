@@ -9,6 +9,7 @@ import Login from "./pages/Login";
 import { useSelector } from "react-redux";
 import TableMenegment from "./pages/TableMenegment";
 import ProductMenegment from "./pages/ProductMenegment";
+import TableStatus from "./pages/TableStatus";
 
 function App() {
     const role = useSelector(state=> state.role.role)
@@ -18,6 +19,10 @@ function App() {
       path: "/",
       element:
         role === "imperator" ? <CafeShops /> : <Home />,
+    },
+    {
+      path: "/table_status/:table_id",
+      element: <TableStatus />,
     },
     {
       path: "/signin",

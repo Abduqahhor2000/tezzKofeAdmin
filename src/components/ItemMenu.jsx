@@ -7,16 +7,17 @@ function ItemMenu({ data }) {
   const location = useLocation();
 
   useEffect(() => {
+    const currentURL = "/" + location.pathname.split("/")[1]
     // eslint-disable-next-line react/prop-types
-    setDirect(
-      "/" + location.pathname.split("/")[1] === data.url ? true : false
+    setDirect( 
+      currentURL === data.url[0] || currentURL === data.url[1] ? true : false
     );
     // eslint-disable-next-line react/prop-types
   }, [data.url, location.pathname]);
 
   return (
     // eslint-disable-next-line react/prop-types
-    <Link to={data.url}>
+    <Link to={data.url[0]}>
       <div
         className={`group rounded-lg px-5 py-3 font-roboto mb-1 text-base leading-5 flex items-start cursor-pointer ${
           direct ? "bg-[#EBEBEB]" : ""

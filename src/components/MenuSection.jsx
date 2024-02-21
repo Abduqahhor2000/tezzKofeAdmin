@@ -23,7 +23,7 @@ function MenuSection() {
       .catch((e) => console.log(e));
   }
 
-  return <div className="grid grid-cols-3 gap-4 pt-10">{
+  return <div className="grid 2xl:grid-cols-3 lg:grid-cols-2 grid-cols-1 gap-4 pt-10">{
      menus.menus.map((item)=> {
       return <MenuCard key={item._id} item={item}/>
      })

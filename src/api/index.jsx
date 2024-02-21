@@ -7,8 +7,14 @@ function createInstance(baseURL, url) {
     (config) => {
       if (config.headers) {
         config.headers.Accept = "application/json";
-        if(localStorage.getItem("token") && url !== "/auth/login" && url !== "/auth/admin/login"){
-            config.headers.Authorization = `Bearer ${localStorage.getItem("token")}`
+        if (
+          localStorage.getItem("token") &&
+          url !== "/auth/login" &&
+          url !== "/auth/admin/login"
+        ) {
+          config.headers.Authorization = `Bearer ${localStorage.getItem(
+            "token"
+          )}`;
         }
       }
 
@@ -20,6 +26,10 @@ function createInstance(baseURL, url) {
   axiosInstance.interceptors.response.use(
     async (res) => res,
     (error) => {
+      if (error.response.status === 401) {
+        localStorage.clear()
+        window.location.href = "/signin"
+      }
       return Promise.reject(error);
     }
   );
@@ -27,18 +37,13 @@ function createInstance(baseURL, url) {
   return axiosInstance;
 }
 
-const instance = (url) =>
-  createInstance(`https://tezzcafe.uz/api/v1`, url);
+const instance = (url) => createInstance(`https://tezzcafe.uz/api/v1`, url);
 
 const instanceForPhoto = (url, data) =>
   createInstance(`https://tezzcafe.uz`, data, url);
 
-
 export const useGet = (url, data) => {
   return instance(url, data).get(url);
-};
-export const useGetPhoto = (url, data) => {
-  return instanceForPhoto(url, data).get(url, data);
 };
 
 export const usePost = (url, data) => {
@@ -54,4 +59,12 @@ export const usePut = (url, data) => {
 
 export const useDelete = (url, data) => {
   return instance(url, data).delete(url, data);
+};
+
+
+export const useGetPhoto = (url, data) => {
+  return instanceForPhoto(url, data).get(url, data);
+};
+export const usePostPhoto = (url, data) => {
+  return instanceForPhoto(url, data).post(url, data);
 };

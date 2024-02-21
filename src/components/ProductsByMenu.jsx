@@ -5,7 +5,7 @@ function ProductsByMenu({menu}) {
     const {products} = useSelector(state => state)
     console.log(products);
   return (
-    <div className="grid grid-cols-3 gap-3">
+    <div className="grid 2xl:grid-cols-3 lg:grid-cols-2 grid-cols-1 gap-3">
        {
         products.products.map((item)=>{
             if(item.category !== menu._id){

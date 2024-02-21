@@ -1,8 +1,10 @@
-import { useSelector } from "react-redux"
-import TableStatusCard from "./cards/TableStatusCard"
 
-function TablesByType({type}) {
+import { useSelector } from "react-redux"
+import TableCard from "./cards/TableCard"
+
+function TableStatusByType({type}) {
     const {tables} = useSelector(state => state)
+    console.log(tables);
   return (
     <div className="grid 2xl:grid-cols-3 lg:grid-cols-2 grid-cols-1 gap-3">
        {
@@ -10,11 +12,11 @@ function TablesByType({type}) {
             if(item.typeOfTable !== type._id){
                 return null
             } 
-            return <TableStatusCard key={item.id} table={item} />
+            return <TableCard key={item.id} table={item} />
         })
        }
     </div>
   )
 }
 
-export default TablesByType
+export default TableStatusByType

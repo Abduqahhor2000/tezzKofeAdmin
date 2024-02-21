@@ -24,7 +24,7 @@ function EmployeesSection() {
   }
 
   return (
-    <div className="grid grid-cols-3 gap-4 pt-10">
+    <div className="grid 2xl:grid-cols-3 lg:grid-cols-2 grid-cols-1 gap-4 pt-10">
       {employees.map((item) => {
         return <EmployeeCard key={item._id} item={item} />;
       })}

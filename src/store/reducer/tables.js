@@ -4,7 +4,7 @@ import { sortByDate } from '../../helper/sortedByDate'
 export const tablesSlice = createSlice({
   name: 'tables',
   initialState: {
-    tables: []
+    tables: [] 
   },
   reducers: {
     setTables: (state, action) => {
@@ -14,7 +14,7 @@ export const tablesSlice = createSlice({
     addTable: (state, action) => {
       state.tables = [action.payload, ...state.tables] 
     },
-    delTable: (state, action) => {
+    delTable: (state, action) => { 
       state.tables = state.tables.filter((item)=> item._id !== action.payload)
     },
     editTable: (state, action) => {

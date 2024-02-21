@@ -25,7 +25,7 @@ function CafeShops() {
           <AddCafe />
         </div>
       </div>
-      <div className="grid grid-cols-3 gap-3 p-4 py-8 ">
+      <div className="grid 2xl:grid-cols-3 lg:grid-cols-2 grid-cols-1 gap-3 p-4 py-8 ">
         {
           cafes.map((item)=>{
             return (<Cafe key={item.id} item={item}/>)
