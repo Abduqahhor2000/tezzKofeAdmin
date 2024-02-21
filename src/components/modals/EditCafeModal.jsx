@@ -64,7 +64,7 @@ function EditCafe({ open, setOpen, cafe }) {
               <div className="text-xl font-semibold">Kafeni tahrirlash</div>
               <IconButton onClick={() => setOpen(false)} sx={{ p: "5px" }}>
                 <img
-                  src="/src/assets/x.svg"
+                  src="/x.svg"
                   alt=""
                   className="cursor-pointer"
                 />
@@ -112,7 +112,7 @@ function EditCafe({ open, setOpen, cafe }) {
                   onChange={(e) => setAddress(e.target.value)}
                   subText={
                     <span className="flex justify-center w-[24px]">
-                      <img src="/src/assets/locate.svg" />
+                      <img src="/locate.svg" />
                     </span>
                   }
                 />

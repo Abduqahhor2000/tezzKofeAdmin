@@ -87,7 +87,7 @@ function AddEmployee() {
               <div className="text-xl font-semibold">Hodim qo`shish</div>
               <IconButton onClick={handleClose} sx={{ p: "5px" }}>
                 <img
-                  src="/src/assets/x.svg"
+                  src="/x.svg"
                   alt=""
                   className="cursor-pointer"
                 />

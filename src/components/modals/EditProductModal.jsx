@@ -88,7 +88,7 @@ function EditProduct({ open, setOpen, product }) {
               <div className="text-xl font-semibold">Taom taxrirlash</div>
               <IconButton onClick={() => setOpen(false)} sx={{ p: "5px" }}>
                 <img
-                  src="/src/assets/x.svg"
+                  src="/x.svg"
                   alt=""
                   className="cursor-pointer"
                 />

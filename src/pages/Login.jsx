@@ -57,7 +57,7 @@ function Login() {
                   onChange={(e) => setLogin(e.target.value)}
                   subText={
                     <span className="flex justify-center w-[24px]">
-                      <img src="/src/assets/person.svg" />
+                      <img src="/person.svg" />
                     </span>
                   }
                 ></BaseInput>

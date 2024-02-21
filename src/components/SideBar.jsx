@@ -11,8 +11,8 @@ function SideBar() {
           url: ["/", "/table_status"],
           text: "Home",
           svg: {
-            active: "/src/assets/home_active.svg",
-            inactive: "/src/assets/home_def.svg",
+            active: "/home_active.svg",
+            inactive: "/home_def.svg",
           },
         }}
       />
@@ -23,8 +23,8 @@ function SideBar() {
               url: ["/employees"],
               text: "Hodimlar",
               svg: {
-                active: "/src/assets/employee_active.svg",
-                inactive: "/src/assets/employee.svg",
+                active: "/employee_active.svg",
+                inactive: "/employee.svg",
               },
             }}
           />
@@ -33,8 +33,8 @@ function SideBar() {
               url: ["/tables"],
               text: "Stollar",
               svg: {
-                active: "/src/assets/list_active.svg",
-                inactive: "/src/assets/list.svg",
+                active: "/list_active.svg",
+                inactive: "/list.svg",
               },
             }}
           />
@@ -43,8 +43,8 @@ function SideBar() {
               url: ["/menus"],
               text: "Menu",
               svg: {
-                active: "/src/assets/menu_active.svg",
-                inactive: "/src/assets/menu.svg",
+                active: "/menu_active.svg",
+                inactive: "/menu.svg",
               },
             }}
           />

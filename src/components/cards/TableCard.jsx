@@ -38,7 +38,7 @@ function TableCard({table}) {
         <div className="self-end text-lg leading-[21px] text-gray-500 font-semibold">{table.totalPrice} so’m</div>
         {
           table.activeItems > 0 ? <div className="pl-1 pr-5 bg-[rgba(255,0,28,0.1)] rounded-full flex items-center">
-            <img src="/src/assets/bell.svg" alt="" />
+            <img src="/bell.svg" alt="" />
             <span className="pl-1 text-red text-base leading-4 font-medium py-2">Chaqiruv</span>
         </div> : null
         }

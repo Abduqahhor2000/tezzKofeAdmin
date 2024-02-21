@@ -69,7 +69,7 @@ function EditEmployee({ open, setOpen, employee }) {
               <div className="text-xl font-semibold">Hodim tahrirlash</div>
               <IconButton onClick={() => setOpen(false)} sx={{ p: "5px" }}>
                 <img
-                  src="/src/assets/x.svg"
+                  src="/x.svg"
                   alt=""
                   className="cursor-pointer"
                 />

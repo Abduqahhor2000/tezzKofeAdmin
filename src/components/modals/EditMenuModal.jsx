@@ -61,7 +61,7 @@ function EditMenu({open, setOpen, menu}) {
               <div className="text-xl font-semibold">Menu taxrirlash</div>
               <IconButton onClick={() => setOpen(false)} sx={{ p: "5px" }}>
                 <img
-                  src="/src/assets/x.svg"
+                  src="/x.svg"
                   alt=""
                   className="cursor-pointer"
                 />

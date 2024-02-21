@@ -28,7 +28,7 @@ function PasswordInput({...props}) {
           size="small"
           startAdornment={
             <InputAdornment position="start">
-              <img src="/src/assets/qulf.svg" alt="" />{" "}
+              <img src="/qulf.svg" alt="" />{" "}
               <span className="p-2 pl-1 text-gray-300">|</span>
             </InputAdornment>
           }

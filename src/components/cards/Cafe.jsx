@@ -53,7 +53,7 @@ function Cafe({item}) {
         </div>
       </div>
       <div className="flex items-center bg-gray-100 rounded-lg px-2">
-        <img src="/src/assets/locate.svg" alt="" />
+        <img src="/locate.svg" alt="" />
         <span className="block text-black text-xs px-1 py-2">
           {item?.address}
         </span>

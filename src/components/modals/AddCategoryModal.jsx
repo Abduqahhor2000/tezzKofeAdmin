@@ -68,7 +68,7 @@ function AddCategory() {
               <div className="text-xl font-semibold">Menu qo`shish</div>
               <IconButton onClick={() => setOpen(false)} sx={{ p: "5px" }}>
                 <img
-                  src="/src/assets/x.svg"
+                  src="/x.svg"
                   alt=""
                   className="cursor-pointer"
                 />

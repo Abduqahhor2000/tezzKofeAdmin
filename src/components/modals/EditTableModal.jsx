@@ -64,7 +64,7 @@ function EditTable({open, setOpen, table}) {
               <div className="text-xl font-semibold">Stol taxrirlash</div>
               <IconButton onClick={() => setOpen(false)} sx={{ p: "5px" }}>
                 <img
-                  src="/src/assets/x.svg"
+                  src="/x.svg"
                   alt=""
                   className="cursor-pointer"
                 />

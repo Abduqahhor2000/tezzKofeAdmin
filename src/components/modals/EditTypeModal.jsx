@@ -43,7 +43,7 @@ function EditType({ open, setOpen, type }) {
               <div className="text-xl font-semibold">Kategoriyani tahrirlash</div>
               <IconButton onClick={() => setOpen(false)} sx={{ p: "5px" }}>
                 <img
-                  src="/src/assets/x.svg"
+                  src="/x.svg"
                   alt=""
                   className="cursor-pointer"
                 />

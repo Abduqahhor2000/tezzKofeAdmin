@@ -8,7 +8,7 @@ function OrderCard() {
             <span className="px-2 text-gray-500 text-base ">Chaqiruv</span>
             <span className="text-xs leading-tight text-gray-400 pt-1">/ 12:00</span>
           </div>
-          <img src="/src/assets/x.svg" alt=""/>
+          <img src="/x.svg" alt=""/>
         </div>
         <div className="pt-3 flex">
             <img className="w-20 h-20 rounded-[10px] object-cover" src="/shashlik.png" alt=""/>
