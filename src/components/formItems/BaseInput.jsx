@@ -13,12 +13,12 @@ function BaseInput({label, subText, ...props}) {
         sx={{ width: "100%" }}
         variant="standard"
       >
-        <FormHelperText className="!mt-0 !leading-[14px] !mb-1 !ml-2" id="outlined-weight-helper-text">{label}</FormHelperText>
+        <FormHelperText className="!mt-0 !leading-[14px] !mb-1 !ml-2 !font-SFProDisplay !font-normal" id="outlined-weight-helper-text">{label}</FormHelperText>
         <OutlinedInput
           id="outlined-adornment-weight"
           {...props}
           size="small"
-          className="!text-base !leading-5 py-0.5 !pl-2"
+          className="!text-base !leading-5 py-0.5 !pl-2 !font-SFProDisplay !font-normal"
           startAdornment={
             <InputAdornment position="start" className="!text-base !leading-5 !text-black">
                 {

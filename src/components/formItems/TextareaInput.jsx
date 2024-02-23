@@ -20,7 +20,7 @@ function TextareaInput({label, ...props}) {
           rows={4}
           {...props}
           size="small"
-          className="!text-base !leading-5 py-0.5 !pl-2"
+          className="!text-base !leading-5 py-0.5 !pl-2 !font-SFProDisplay !font-normal"
           aria-describedby="outlined-weight-helper-text"
           inputProps={{
             "aria-label": "weight",

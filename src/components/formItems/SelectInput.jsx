@@ -6,13 +6,13 @@ function SelectInput({label, options=[], ...props}) {
   return (
     <div>
       <FormControl required sx={{ minWidth: "100%" }}>
-        <FormHelperText className="!text-xs !leading-[14px] !m-0 !ml-2 !mb-1">
+        <FormHelperText className="!text-xs !leading-[14px] !m-0 !ml-2 !mb-1 !font-SFProDisplay !font-normal">
           {label}
         </FormHelperText>
         <Select
           size="small"
           id="demo-simple-select-required"
-          className="!text-base !leading-5 py-0.5 !pl-2"
+          className="!text-base !leading-5 py-0.5 !pl-2 !font-SFProDisplay !font-normal"
           startAdornment={
             <InputAdornment position="start" className="!text-base !leading-5 !text-black">
               <span className="p-1 pr-0 font-light text-gray-300">|</span>

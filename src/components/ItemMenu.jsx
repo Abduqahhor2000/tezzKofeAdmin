@@ -19,7 +19,7 @@ function ItemMenu({ data }) {
     // eslint-disable-next-line react/prop-types
     <Link to={data.url[0]}>
       <div
-        className={`group rounded-lg px-5 py-3 font-roboto mb-1 text-base leading-5 flex items-start cursor-pointer ${
+        className={`group rounded-lg px-5 py-3 font-SFProDisplay mb-1 text-base leading-5 flex items-start cursor-pointer ${
           direct ? "bg-[#EBEBEB]" : ""
         }`}
       >
@@ -31,8 +31,8 @@ function ItemMenu({ data }) {
         <span
           className={
             direct
-              ? "text-blue-500 pl-1"
-              : "text-[#322E38] pl-1 group-hover:text-blue-500 duration-150"
+              ? "text-blue-500 pl-1 font-medium"
+              : "text-[#322E38] pl-1 font-medium group-hover:text-blue-500 duration-150"
           }
         >
           {data.text}

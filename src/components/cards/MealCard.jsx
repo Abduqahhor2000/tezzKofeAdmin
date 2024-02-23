@@ -3,6 +3,7 @@ import { Pen, Trash } from "../PenAndTrash";
 import ThreeDots from "../ThreeDots";
 import DeleteProduct from "../modals/DeleteProductModal";
 import EditProduct from "../modals/EditProductModal";
+import ImageDownloader from "../ImageDownloader";
 
 function MealCard({product}) {
   const [delOpen, setDelOpen] = useState(false)
@@ -19,15 +20,15 @@ function MealCard({product}) {
   return ( 
     <>
       <div className="bg-gray-100 p-4 flex rounded-lg">
-        <img
+        <ImageDownloader
           className="w-20 h-20 rounded-[10px] object-cover"
-          src="/ovqat.png"
+          url={product.photo || "no-photo.jpg"}
           alt=""
         />
         <div className="pl-3 text-sm flex-grow">
-          <div className="pb-1 font-semibold">{product.name}</div>
-          <div className="text-gray-400 font-medium">Taomlar</div>
-          <div className="pt-4 text-base leading-5 font-semibold">{product.price} so’m</div>
+          <div className="pb-1 font-semibold font-unbounded">{product.name}</div>
+          <div className="text-gray-400 font-medium font-SFProDisplay">Taomlar</div>
+          <div className="pt-4 text-base leading-5 font-semibold font-SFProDisplay">{product.price} so’m</div>
         </div>
         <div className="relative -top-2.5 -right-4">
           <ThreeDots

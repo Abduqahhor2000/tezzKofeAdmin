@@ -53,7 +53,7 @@ function SignIn() {
       <div className="flex justify-center items-center flex-grow">
         <div className="w-[360px] border-gray-100 border-2 rounded-xl overflow-hidden">
           <div className="p-5">
-            <h1 className="text-3xl font-semibold leading-[48px] mb-6">
+            <h1 className="text-3xl font-semibold font-unbounded leading-[48px] mb-6">
               Kirish
             </h1>
             <form onSubmit={logIn}>

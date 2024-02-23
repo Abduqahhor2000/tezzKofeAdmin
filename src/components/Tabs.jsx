@@ -18,7 +18,7 @@ const Tablo = forwardRef(function BasicTabs({ data, ...props }, ref) {
           return (
             <Tab
               key={item.id}
-              className="!text-base !leading-4 !font-medium !normal-case !h-10"
+              className="!text-base !leading-4 !font-medium !normal-case !h-10 !font-SFProDisplay"
               label={item.label}
               {...a11yProps(item.id)}
             />

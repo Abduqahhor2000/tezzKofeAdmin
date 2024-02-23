@@ -11,7 +11,7 @@ function TableStatus() {
   const [table, setTable] = useState(null);
   const { tables } = useSelector((state) => state.tables);
 
-  console.log(tables, params.table_id);
+  console.log("sadadasdasd", table, params.table_id);
 
   useEffect(() => {
     setTable(tables.find((table) => table._id === params.table_id));
@@ -22,7 +22,7 @@ function TableStatus() {
       <div className="flex justify-between border-b-[1px] border-gray-200">
         <div
           onClick={() => navigate("/")}
-          className="text-sm leading-none rounded-lg py-3 px-5 text-primary bg-[rgb(243,216,242)] mb-2 cursor-pointer"
+          className="text-sm leading-none rounded-lg py-3 px-5 text-primary bg-[rgb(243,216,242)] mb-2 cursor-pointer font-semibold font-SFProDisplay"
         >
           {table?.name}
         </div>
@@ -30,8 +30,8 @@ function TableStatus() {
       </div>
       <div className="flex-grow overflow-y-auto pt-10">
         <div className="grid 2xl:grid-cols-3 lg:grid-cols-2 grid-cols-1 gap-4">
-          {table
-            ? table.totalOrders.map((item) => {
+          {table?.totalOrders
+            ? table?.totalOrders.map((item) => {
                 return <OrderCard key={item} />;
               })
             : null}

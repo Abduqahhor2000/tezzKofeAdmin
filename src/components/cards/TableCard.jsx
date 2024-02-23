@@ -16,11 +16,11 @@ function TableCard({table}) {
   }
 
   return (
-    <div onDoubleClick={() => navigate(`/table_status/${table._id}`)} className="p-5 border-[rgb(230, 230, 230)] border-[1px] cursor-pointer rounded-xl">
+    <div onDoubleClick={() => navigate(`/table_status/${table._id}`)} className="p-5 border-[rgb(230, 230, 230)] border-[1px] cursor-pointer rounded-xl font-SFProDisplay">
       <div className="flex justify-between pb-6">
         <div>
           <div className="text-[32px] font-semibold leading-10">{table.name}</div>
-          <p className="pt-1 text-sm leading-[17px] text-gray-400">
+          <p className="pt-1 text-sm leading-[17px] text-gray-400 font-medium">
             {waiter ? `${waiter.firstName} ${waiter.lastName}` :  null}
           </p>
         </div>
@@ -35,7 +35,7 @@ function TableCard({table}) {
        
       </div> 
       <div className="flex justify-between items-center">
-        <div className="self-end text-lg leading-[21px] text-gray-500 font-semibold">{table.totalPrice} so’m</div>
+        <div className="self-end text-lg leading-[21px] text-gray-500 font-semibold">{table.totalPrice || 0} so’m</div>
         {
           table.activeItems > 0 ? <div className="pl-1 pr-5 bg-[rgba(255,0,28,0.1)] rounded-full flex items-center">
             <img src="/bell.svg" alt="" />

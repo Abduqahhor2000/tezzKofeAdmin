@@ -87,16 +87,12 @@ function EditProduct({ open, setOpen, product }) {
             <div className="flex justify-between mb-6">
               <div className="text-xl font-semibold">Taom taxrirlash</div>
               <IconButton onClick={() => setOpen(false)} sx={{ p: "5px" }}>
-                <img
-                  src="/x.svg"
-                  alt=""
-                  className="cursor-pointer"
-                />
+                <img src="/x.svg" alt="" className="cursor-pointer" />
               </IconButton>
             </div>
             <form onSubmit={addProductFunc}>
               <div className="grid grid-cols-1 gap-4">
-                <ImageInput />
+                <ImageInput file={photo} setFile={setPhoto} />
                 <SelectInput
                   value={category}
                   onChange={(e) => setCategory(e.target.value)}

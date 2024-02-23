@@ -6,6 +6,7 @@ import tablesReducer from "./reducer/tables"
 import menusReducer from "./reducer/menus"
 import productsReducer from "./reducer/products"
 import adminReducer from "./reducer/admin"
+import imagesReducer from "./reducer/images"
 
 // rootReducer.js
 import { combineReducers } from 'redux';
@@ -19,6 +20,7 @@ const rootReducer = combineReducers({
   menus: menusReducer,
   products: productsReducer,
   admin: adminReducer,
+  images: imagesReducer,
   // Add more reducers as needed
 });
 

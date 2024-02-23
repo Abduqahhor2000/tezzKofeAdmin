@@ -93,7 +93,7 @@ function AddProduct() {
             </div>
             <form onSubmit={addProductFunc}>
               <div className="grid grid-cols-1 gap-4">
-                <ImageInput />
+                <ImageInput file={photo} setFile={setPhoto} />
                 <SelectInput
                   value={category}
                   onChange={(e) => setCategory(e.target.value)}

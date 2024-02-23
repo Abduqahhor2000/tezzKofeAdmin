@@ -18,7 +18,7 @@ function EditMenu({open, setOpen, menu}) {
   const dispatch = useDispatch();
 
   const [name, setName] = useState(menu.name);
-  const [photo, setPhoto] = useState("");
+  const [photo, setPhoto] = useState(menu.photo);
 
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
@@ -69,7 +69,7 @@ function EditMenu({open, setOpen, menu}) {
             </div>
             <form onSubmit={editMenuFunc}>
               <div className="grid grid-cols-1 gap-4">
-                <ImageInput />
+                <ImageInput file={photo} setFile={setPhoto} />
                 <BaseInput
                   value={name}
                   onChange={(e) => setName(e.target.value)}

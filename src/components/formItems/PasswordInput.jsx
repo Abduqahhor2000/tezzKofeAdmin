@@ -24,7 +24,7 @@ function PasswordInput({...props}) {
           placeholder="••••••••"
           id="outlined-adornment-weight"
           type={showPassword ? "text" : "password"}
-          className="!text-base !leading-5 py-0.5 !pl-2"
+          className="!text-base !leading-5 py-0.5 !pl-2 !font-SFProDisplay !font-normal"
           size="small"
           startAdornment={
             <InputAdornment position="start">

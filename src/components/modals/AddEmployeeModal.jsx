@@ -95,7 +95,7 @@ function AddEmployee() {
             </div>
             <form onSubmit={addEmployeeFunc}>
               <div className="grid grid-cols-1 gap-4">
-                <ImageInput />
+                <ImageInput file={avatar} setFile={setAvatar} />
                 <BaseInput
                   onChange={(e) => setFirstName(e.target.value)}
                   value={firstName}

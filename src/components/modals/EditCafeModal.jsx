@@ -73,8 +73,8 @@ function EditCafe({ open, setOpen, cafe }) {
             <form onSubmit={editCafeFunc}>
               <div className="grid grid-cols-1 gap-4">
                 <ImageInput
-                  value={avatar}
-                  onChange={(e) => setAvatar(e.target.value)}
+                  file={avatar}
+                  setFile={setAvatar}
                 />
                 <BaseInput
                   value={name}

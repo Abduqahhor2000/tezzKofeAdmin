@@ -32,10 +32,10 @@ function TableStatusCard({table}) {
         <div className="flex-grow">
           <div className="flex items-center pb-4">
             <div className={`w-3 h-3 rounded-full mr-1 ${table.waiter ? "bg-green-500": "bg-red"}`}></div>
-            <div className=" font-semibold text-xl leading-5">{table.name}</div>
+            <div className="font-unbounded font-semibold text-xl leading-5">{table.name}</div>
           </div>
 
-          <div className="text-gray-400 text-sm font-medium">{waiterFullName()}</div>
+          <div className="text-gray-400 text-sm font-SFProDisplay font-medium">{waiterFullName()}</div>
         </div>
         <div className="relative -top-2.5 -right-4">
           <ThreeDots

@@ -9,7 +9,7 @@ function TableStatusByType({type}) {
     <div className="grid 2xl:grid-cols-3 lg:grid-cols-2 grid-cols-1 gap-3">
        {
         tables.tables.map((item)=>{
-            if(item.typeOfTable !== type._id){
+            if(item.typeOfTable._id !== type._id){
                 return null
             } 
             return <TableCard key={item.id} table={item} />

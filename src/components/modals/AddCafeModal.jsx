@@ -99,8 +99,9 @@ function AddCafe() {
             <form onSubmit={addCafeFunc}>
               <div className="grid grid-cols-1 gap-4">
                 <ImageInput
+                  file={avatar}
                   value={avatar}
-                  onChange={(e) => setAvatar(e.target.value)}
+                  setFile={setAvatar}
                 />
                 <BaseInput
                   value={name}

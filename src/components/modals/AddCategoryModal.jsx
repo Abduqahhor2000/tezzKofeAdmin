@@ -76,7 +76,7 @@ function AddCategory() {
             </div>
             <form onSubmit={addMenuFunc}>
               <div className="grid grid-cols-1 gap-4">
-                <ImageInput />
+                <ImageInput file={photo} setFile={setPhoto} />
                 <BaseInput
                   value={name}
                   onChange={(e) => setName(e.target.value)}
