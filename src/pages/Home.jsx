@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import CustomTabPanel from "../components/CustomTabPanel";
 import { useGet } from "../api";
 import TableStatusByType from "../components/TableStatusByType";
-import { setTables } from "../store/reducer/tables";
+import { setTables, tableLoadingStatus } from "../store/reducer/tables";
 import { setTypes } from "../store/reducer/types";
 
 function a11yProps(index) {
@@ -36,12 +36,17 @@ function Home() {
       .catch((e) => console.log(e));
   }
   function getTables() {
+    dispatch(tableLoadingStatus(true))
     // eslint-disable-next-line react-hooks/rules-of-hooks
     useGet(`/tables`)
       .then(({ data }) => {
         dispatch(setTables(data));
+        dispatch(tableLoadingStatus(false))
       })
-      .catch((e) => console.log(e));
+      .catch((e) => {
+        dispatch(tableLoadingStatus(false))
+        console.log(e)
+      });
   }
 
   return (

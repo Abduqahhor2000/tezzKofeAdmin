@@ -10,6 +10,7 @@ import { useSelector } from "react-redux";
 import TableMenegment from "./pages/TableMenegment";
 import ProductMenegment from "./pages/ProductMenegment";
 import TableStatus from "./pages/TableStatus";
+import Test from "./pages/Test";
 
 function App() {
     const role = useSelector(state=> state.role.role)
@@ -52,6 +53,10 @@ function App() {
       path: "/menus/products",
       element: <ProductMenegment />,
     },
+    {
+      path: "/ffu",
+      element: <Test />
+    }
   ]);
 
   return (

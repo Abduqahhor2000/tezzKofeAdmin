@@ -26,7 +26,8 @@ function createInstance(baseURL, url) {
   axiosInstance.interceptors.response.use(
     async (res) => res,
     (error) => {
-      if (error.response.status === 401) {
+      console.log(error);
+      if (error.response.status === 401 && error.config.url !== "/auth/login") {
         localStorage.clear()
         window.location.href = "/signin"
       }

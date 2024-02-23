@@ -4,6 +4,7 @@ import { v4 as uuidv4 } from "uuid";
 import { LinearProgress } from "@mui/material";
 import ImageDownloader from "../ImageDownloader";
 // import ImageDownloader from "../ImageDownloader";
+import defaultImg from "../../../public/photo.svg"
 
 function ImageInput({ file, setFile }) {
   const [selectedFile, setSelectedFile] = useState(null);
@@ -112,7 +113,7 @@ function ImageInput({ file, setFile }) {
           ) :
           (
             <img
-              src="/photo.svg"
+              src={"/photo.svg"}
               className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
             />
           )}

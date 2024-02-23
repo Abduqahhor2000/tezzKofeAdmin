@@ -26,13 +26,13 @@ function SignIn() {
     // eslint-disable-next-line react-hooks/rules-of-hooks
     usePost("/auth/login", { password, phone })
       .then(({ data }) => {
-        dispatch(removeRole());
         localStorage.setItem("token", data);
         // eslint-disable-next-line react-hooks/rules-of-hooks
         useGet("/auth/me")
           .then(({ data }) => {
             console.log(data);
             dispatch(putAdmin(data))
+            dispatch(removeRole());
             setLoading(false);
             navigate("/");
           })
