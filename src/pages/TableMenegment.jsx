@@ -17,10 +17,10 @@ function a11yProps(index) {
 
 function TableMenegment() {
   const dispatch = useDispatch();
-  const { types, tables } = useSelector((state) => state);
+  const types = useSelector((state) => state?.types?.types);
   const [value, setValue] = useState(0);
 
-  console.log(tables);
+  // console.log(types);
 
   useEffect(() => {
     getTable();
@@ -43,10 +43,10 @@ function TableMenegment() {
           onChange={(e, newValue) => setValue(newValue)}
           arida-label="basic tabs example"
         >
-          {types.types.map((item, index) => {
+          {types.map((item, index) => {
             return (
               <Tab
-                key={item.id}
+                key={item._id}
                 className="!text-base !leading-4 !font-medium !normal-case !h-10"
                 label={item.name}
                 {...a11yProps(index)}
@@ -60,7 +60,7 @@ function TableMenegment() {
         </div>
       </div>
       <div className="flex-grow overflow-y-auto pt-10">
-        {types.types.map((item, index) => {
+        {types.map((item, index) => {
           return (
             <CustomTabPanel key={item._id} index={index} value={value}>
               <TablesByType type={item} />

@@ -54,10 +54,10 @@ function AddEmployee() {
       password,
       firstName,
       lastName,
-      avatar: avatar ? avatar : null,
+      ...(avatar ? {avatar} : {}),
     })
       .then(({ data }) => {
-        console.log(data);
+        // console.log(data);
         setLoading(false);
         setOpen(false);
         dispatch(addEmployee(data));

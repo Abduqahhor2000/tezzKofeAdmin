@@ -2,7 +2,7 @@ import { FormControl, FormHelperText, InputAdornment, MenuItem } from "@mui/mate
 import Select from "@mui/material/Select";
 
 function SelectInput({label, options=[], ...props}) {
-  console.log(options);
+  // console.log(options);
   return (
     <div>
       <FormControl required sx={{ minWidth: "100%" }}>

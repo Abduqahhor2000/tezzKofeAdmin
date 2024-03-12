@@ -17,7 +17,7 @@ const style = {
 };
 
 function AddProduct() {
-  const { menus } = useSelector((state) => state);
+  const { menus } = useSelector((state) => state.menus);
   const dispatch = useDispatch();
 
   const [description, setDescription] = useState("");
@@ -55,7 +55,7 @@ function AddProduct() {
       unit: "ta",
     })
       .then(({ data }) => {
-        console.log(data);
+        // console.log(data);
         dispatch(addProduct(data));
         setLoading(false);
         setOpen(false);
@@ -97,7 +97,7 @@ function AddProduct() {
                 <SelectInput
                   value={category}
                   onChange={(e) => setCategory(e.target.value)}
-                  options={menus?.menus?.map((item) => ({
+                  options={menus?.map((item) => ({
                     value: item._id,
                     label: item.name,
                   }))}

@@ -36,7 +36,7 @@ function AddSection() {
       name,
     })
       .then(({ data }) => {
-        console.log(data);
+        // console.log(data);
         dispatch(addType(data))
         setLoading(false);
         setOpen(false);

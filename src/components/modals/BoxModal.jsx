@@ -12,9 +12,9 @@ function BoxModal({ children, ...props }) {
   return (
     <>
       <Modal
-        {...props}
         aria-labelledby="parent-modal-title"
         aria-describedby="parent-modal-description"
+        {...props}
       >
         <div style={{ ...style }}>{children}</div>
       </Modal>

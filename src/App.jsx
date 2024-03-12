@@ -14,7 +14,7 @@ import Test from "./pages/Test";
 
 function App() {
     const role = useSelector(state=> state.role.role)
-    console.log(role);
+    // console.log(import.meta.env.VITE_DOMAIN);
   const router = createBrowserRouter([
     {
       path: "/",

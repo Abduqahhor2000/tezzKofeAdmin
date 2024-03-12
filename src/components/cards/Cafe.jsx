@@ -11,11 +11,11 @@ function Cafe({item}) {
   const [openEdit, setOpenEdit] = useState(false)
 
   function salom() {
-    console.log("salom");
+    // console.log("salom");
     setOpenEdit(true)
   }
   function qalay() {
-    console.log("qalay");
+    // console.log("qalay");
     setOpenDel(true)
   }
   return (

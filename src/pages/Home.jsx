@@ -7,6 +7,7 @@ import { useGet } from "../api";
 import TableStatusByType from "../components/TableStatusByType";
 import { setTables, tableLoadingStatus } from "../store/reducer/tables";
 import { setTypes } from "../store/reducer/types";
+import io from "socket.io-client";
 
 function a11yProps(index) {
   return {
@@ -17,14 +18,57 @@ function a11yProps(index) {
 
 function Home() {
   const dispatch = useDispatch();
-  const { types, tables, admin } = useSelector((state) => state);
+  const { types } = useSelector((state) => state.types);
   const [value, setValue] = useState(0);
 
-  console.log(tables, types);
+  // console.log(tables, types);
 
   useEffect(() => {
     getTypes();
     getTables();
+    // getStatusWaiter()
+    if (!localStorage.getItem("token")) {
+      return;
+    }
+
+    const events = [
+      "callAccepted",
+      "callWaiter",
+      "closedTable",
+      "noActiveOrder",
+      "newActiveOrder",
+      "tableOccupied",
+    ];
+
+    const socket = io(
+      `${import.meta.env.VITE_DOMAIN || "https://tezzcafe.uz"}`,
+      {
+        withCredentials: true,
+        autoConnect: true,
+        secure: true,
+        reconnection: true,
+        reconnectionAttempts: Infinity,
+        transports: ["websocket"],
+        query: {
+          token: localStorage.getItem("token") || "",
+        },
+      }
+    );
+
+    socket.connect();
+    events.map((event) => {
+      socket.on(event, () => {
+        console.log("Connected to server!");
+        getTables();
+      });
+    });
+
+    return () => {
+      events.map((event) => {
+        socket.off(event);
+      });
+      socket.disconnect();
+    }; // Disconnect on unmount
   }, []);
 
   function getTypes() {
@@ -36,16 +80,16 @@ function Home() {
       .catch((e) => console.log(e));
   }
   function getTables() {
-    dispatch(tableLoadingStatus(true))
+    dispatch(tableLoadingStatus(true));
     // eslint-disable-next-line react-hooks/rules-of-hooks
     useGet(`/tables`)
       .then(({ data }) => {
         dispatch(setTables(data));
-        dispatch(tableLoadingStatus(false))
+        dispatch(tableLoadingStatus(false));
       })
       .catch((e) => {
-        dispatch(tableLoadingStatus(false))
-        console.log(e)
+        dispatch(tableLoadingStatus(false));
+        console.log(e);
       });
   }
 
@@ -57,7 +101,7 @@ function Home() {
           onChange={(e, newValue) => setValue(newValue)}
           arida-label="basic tabs example"
         >
-          {types.types.map((item, index) => {
+          {types.map((item, index) => {
             return (
               <Tab
                 key={item._id}
@@ -70,7 +114,7 @@ function Home() {
         </Tabs>
       </div>
       <div className="flex-grow overflow-y-auto pt-10">
-        {types.types.map((item, index) => {
+        {types.map((item, index) => {
           return (
             <CustomTabPanel key={item._id} index={index} value={value}>
               <TableStatusByType type={item} />

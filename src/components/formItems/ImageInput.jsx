@@ -33,7 +33,7 @@ function ImageInput({ file, setFile }) {
     setProgress(0)
     setLoading(true)
     const fileId = `photo-${uuidv4()}`;
-    const chunkSize = 0.1 * 1024 * 1024; // 5MB (adjust based on your requirements)
+    const chunkSize = 1 * 1024 * 1024; // 5MB (adjust based on your requirements)
     const totalChunks = Math.ceil(selectedFile.size / chunkSize);
     const chunkProgress = 100 / totalChunks;
     let chunkNumber = 0;
@@ -41,10 +41,10 @@ function ImageInput({ file, setFile }) {
     let end = Math.min(chunkSize, selectedFile.size);
 
     const uploadNextChunk = async () => {
-      console.log(selectedFile);
+      // console.log(selectedFile);
       if (end <= selectedFile.size && chunkNumber < totalChunks) {
         const chunk = selectedFile.slice(start, end);
-        console.log(start, end, chunkNumber, selectedFile.size);
+        // console.log(start, end, chunkNumber, selectedFile.size);
         const formData = new FormData();
         formData.append("file", chunk);
         formData.append("fileId", fileId);
@@ -60,7 +60,7 @@ function ImageInput({ file, setFile }) {
             }/${totalChunks} uploaded successfully`;
             setStatus(temp);
             setProgress(Number((chunkNumber + 1) * chunkProgress));
-            console.log(temp);
+            // console.log(temp);
             chunkNumber++;
             start = end;
             end = Math.min(end + chunkSize, selectedFile.size);

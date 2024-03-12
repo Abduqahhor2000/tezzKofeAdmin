@@ -7,13 +7,13 @@ import EditType from "../modals/EditTypeModal";
 function CategoryCard({item}) {
   const [editOpen, setEditOpen] = useState(false)
   const [delOpen, setDelOpen] = useState(false)
-  console.log(item);
+  // console.log(item);
   function salom() {
-    console.log("salom");
+    // console.log("salom");
     setEditOpen(true)
   }
   function qalay() {
-    console.log("qalay");
+    // console.log("qalay");
     setDelOpen(true)
   }
 

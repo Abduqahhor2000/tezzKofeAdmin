@@ -42,7 +42,7 @@ function EditCafe({ open, setOpen, cafe }) {
       },
     })
       .then(({ data }) => {
-        console.log(data);
+        // console.log(data);
         setLoading(false);
         setOpen(false);
         dispatch(editCafe({...cafe, ...data, director:{...cafe.director, fullName, phone}}));

@@ -16,7 +16,7 @@ function DeleteType({ open, setOpen, id }) {
     // eslint-disable-next-line react-hooks/rules-of-hooks
     useDelete(`/tables/type/${id}`)
       .then((e) => {
-        console.log(e);
+        // console.log(e);
         dispatch(delType(id));
         setLoading(false);
         setOpen(false);

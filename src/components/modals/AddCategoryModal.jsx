@@ -38,7 +38,7 @@ function AddCategory() {
       photo: photo ? photo : null,
     })
       .then(({ data }) => {
-        console.log(data);
+        // console.log(data);
         dispatch(addMenu(data));
         setLoading(false);
         setOpen(false);

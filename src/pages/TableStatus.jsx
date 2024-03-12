@@ -11,7 +11,7 @@ function TableStatus() {
   const [table, setTable] = useState(null);
   const { tables } = useSelector((state) => state.tables);
 
-  console.log("sadadasdasd", table, params.table_id);
+  // console.log("sadadasdasd", table, params.table_id);
 
   useEffect(() => {
     setTable(tables.find((table) => table._id === params.table_id));
@@ -26,13 +26,18 @@ function TableStatus() {
         >
           {table?.name}
         </div>
-        <div></div>
+        <div className="text-lg leading-5 text-gray-500 font-semibold font-SFProDisplay">{table?.totalOrders?.totalPrice || 0} {`so'm`}</div>
       </div>
       <div className="flex-grow overflow-y-auto pt-10">
         <div className="grid 2xl:grid-cols-3 lg:grid-cols-2 grid-cols-1 gap-4">
-          {table?.totalOrders
-            ? table?.totalOrders.map((item) => {
-                return <OrderCard key={item} />;
+          {/* {table?.activeOrders?.products?.length > 0
+            ? table?.activeOrders.products.map((item) => {
+                return <OrderCard key={item.id} order={item} />;
+              })
+            : null} */}
+          {table?.totalOrders?.products?.length > 0
+            ? table?.totalOrders.products.map((item) => {
+                return <OrderCard key={item._id} order={item} time={table?.totalOrders?.updatedAt}/>;
               })
             : null}
         </div>

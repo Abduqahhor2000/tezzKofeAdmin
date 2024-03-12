@@ -16,7 +16,7 @@ function DeleteCafe({ open, setOpen, id }) {
     // eslint-disable-next-line react-hooks/rules-of-hooks
     useDelete(`/restaurants/${id}`)
       .then((e) => {
-        console.log(e);
+        // console.log(e);
         dispatch(DelCafe(id));
         setLoading(false);
         setOpen(false);

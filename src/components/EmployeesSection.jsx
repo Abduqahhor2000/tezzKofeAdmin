@@ -6,7 +6,7 @@ import { setEmployees } from "../store/reducer/employees";
 
 function EmployeesSection() {
   const employees = useSelector((state => state.employees.employees))
-  console.log(employees);
+  // console.log(employees);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -17,7 +17,7 @@ function EmployeesSection() {
     // eslint-disable-next-line react-hooks/rules-of-hooks
     useGet("/waiters")
       .then(({ data }) => {
-        console.log(data);
+        // console.log(data);
         dispatch(setEmployees(data));
       })
       .catch((e) => console.log(e));

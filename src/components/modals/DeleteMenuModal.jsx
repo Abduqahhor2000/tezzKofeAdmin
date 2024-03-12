@@ -16,7 +16,7 @@ function DeleteMenu({ open, setOpen, id }) {
     // eslint-disable-next-line react-hooks/rules-of-hooks
     useDelete(`/categories/${id}`)
       .then((e) => {
-        console.log(e);
+        // console.log(e);
         dispatch(delMenu(id));
         setLoading(false);
         setOpen(false);

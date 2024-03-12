@@ -15,7 +15,7 @@ function TableStatusByType({ type }) {
             if (item.typeOfTable._id !== type._id) {
               return null;
             }
-            return <TableCard key={item.id} table={item} />;
+            return <TableCard key={item._id} table={item} />;
           })}
       {}
       {}

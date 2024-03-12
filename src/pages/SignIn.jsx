@@ -30,7 +30,7 @@ function SignIn() {
         // eslint-disable-next-line react-hooks/rules-of-hooks
         useGet("/auth/me")
           .then(({ data }) => {
-            console.log(data);
+            // console.log(data);
             dispatch(putAdmin(data))
             dispatch(removeRole());
             setLoading(false);

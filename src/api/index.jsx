@@ -38,10 +38,10 @@ function createInstance(baseURL, url) {
   return axiosInstance;
 }
 
-const instance = (url) => createInstance(`https://tezzcafe.uz/api/v1`, url);
+const instance = (url) => createInstance(`${import.meta.env.VITE_DOMAIN || "https://tezzcafe.uz"}/api/v1`, url);
 
 const instanceForPhoto = (url, data) =>
-  createInstance(`https://tezzcafe.uz`, data, url);
+  createInstance(`${import.meta.env.VITE_DOMAIN || "https://tezzcafe.uz"}`, data, url);
 
 export const useGet = (url, data) => {
   return instance(url, data).get(url);

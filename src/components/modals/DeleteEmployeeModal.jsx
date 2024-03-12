@@ -17,7 +17,7 @@ function DeleteEmployee({ open, setOpen, id }) {
     // eslint-disable-next-line react-hooks/rules-of-hooks
     useDelete(`/waiters/${id}`)
       .then((e) => {
-        console.log(e);
+        // console.log(e);
         dispatch(delEmployee(id));
         setLoading(false);
         setOpen(false);

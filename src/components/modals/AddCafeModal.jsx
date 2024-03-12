@@ -60,7 +60,7 @@ function AddCafe() {
       director: { fullName, phone, password, avatar: avatar ? avatar : null },
     })
       .then(({ data }) => {
-        console.log(data);
+        // console.log(data);
         setLoading(false);
         setOpen(false);
         dispatch(addCafe(data))

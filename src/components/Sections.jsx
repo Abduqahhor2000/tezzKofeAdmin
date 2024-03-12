@@ -7,7 +7,7 @@ import { setTables } from "../store/reducer/tables";
 
 function Sections() {
   const types = useSelector((state) => state.types.types);
-  console.log(types);
+  // console.log(types);
   const dispatch = useDispatch();
 
   useEffect(() => {

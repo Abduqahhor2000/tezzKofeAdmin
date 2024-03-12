@@ -13,10 +13,10 @@ export default function ImageDownloader({ url, ...props }) {
       return;
     }
     
-    if(images[url]){
+    if(images[url]){ 
       setImageSrc(images[url])
       return
-    }
+    } 
 
     const fetchImage = async () => {
       try {

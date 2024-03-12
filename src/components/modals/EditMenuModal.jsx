@@ -32,7 +32,7 @@ function EditMenu({open, setOpen, menu}) {
       photo: photo ? photo : null,
     })
       .then(({ data }) => {
-        console.log(data);
+        // console.log(data);
         dispatch(editMenu(data));
         setLoading(false);
         setOpen(false);

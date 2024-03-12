@@ -1,4 +1,4 @@
-import { IconButton, LinearProgress, Modal } from "@mui/material";
+import { IconButton, LinearProgress, Modal, Snackbar } from "@mui/material";
 import { useState } from "react";
 import BaseInput from "../formItems/BaseInput";
 import PrimerButton from "../PrimerButton";
@@ -15,13 +15,14 @@ const style = {
   transform: "translate(-50%, -50%)",
 };
 
-function EditTable({open, setOpen, table}) {
-  const { employees, types } = useSelector((state) => state);
+function EditTable({ open, setOpen, table }) {
+  const { employees } = useSelector((state) => state.employees);
+  const { types } = useSelector((state) => state.types);
   const dispatch = useDispatch();
 
-  const [typeOfTable, setTypeOfTable] = useState(table.typeOfTable);
+  const [typeOfTable, setTypeOfTable] = useState(table.typeOfTable._id);
   const [name, setName] = useState(table.name);
-  const [waiter, setWaiter] = useState(table.waiter ? table.waiter : "");
+  const [waiter, setWaiter] = useState(table.waiter ? table.waiter._id : "");
   const [forAll, setForAll] = useState(false);
 
   const [loading, setLoading] = useState(false);
@@ -38,7 +39,7 @@ function EditTable({open, setOpen, table}) {
       waiter: waiter && !forAll ? waiter : null,
     })
       .then(({ data }) => {
-        console.log(data);
+        // console.log(data);
         dispatch(editTable(data));
         setLoading(false);
         setOpen(false);
@@ -46,7 +47,7 @@ function EditTable({open, setOpen, table}) {
       .catch((e) => {
         console.log(e.message);
         setLoading(false);
-        setError(e.message);
+        setError(e?.response?.data?.error[0]);
       });
   }
 
@@ -58,16 +59,15 @@ function EditTable({open, setOpen, table}) {
         aria-labelledby="parent-modal-title"
         aria-describedby="parent-modal-description"
       >
-        <div style={{ ...style }} className="w-[360px] overflow-hidden bg-white rounded-xl">
+        <div
+          style={{ ...style }}
+          className="w-[360px] overflow-hidden bg-white rounded-xl"
+        >
           <div className="py-6 px-5">
             <div className="flex justify-between mb-6">
               <div className="text-xl font-semibold">Stol taxrirlash</div>
               <IconButton onClick={() => setOpen(false)} sx={{ p: "5px" }}>
-                <img
-                  src="/x.svg"
-                  alt=""
-                  className="cursor-pointer"
-                />
+                <img src="/x.svg" alt="" className="cursor-pointer" />
               </IconButton>
             </div>
             <form onSubmit={editTableFunc}>
@@ -76,7 +76,7 @@ function EditTable({open, setOpen, table}) {
                   value={typeOfTable}
                   onChange={(e) => setTypeOfTable(e.target.value)}
                   label="Kategoriya"
-                  options={types?.types?.map((item) => ({
+                  options={types?.map((item) => ({
                     value: item._id,
                     label: item.name,
                   }))}
@@ -96,7 +96,7 @@ function EditTable({open, setOpen, table}) {
                     onChange={(e) => setWaiter(e.target.value)}
                     className="mb-2.5"
                     label="Afitsant"
-                    options={employees?.employees?.map((item) => ({
+                    options={employees?.map((item) => ({
                       value: item._id,
                       label: `${item.firstName} ${item.lastName}`,
                     }))}
@@ -122,6 +122,20 @@ function EditTable({open, setOpen, table}) {
           />
         </div>
       </Modal>
+      <Snackbar
+        autoHideDuration={5000}
+        color="danger"
+        size="md"
+        open={error}
+        onClose={() => setError(() => "")}
+        variant="outlined"
+        content="salom"
+        contextMenu="salom"
+      >
+        <span className="border-red border-2 p-4 py-2 rounded-xl text-red bg-white">
+          {error}
+        </span>
+      </Snackbar>
     </>
   );
 }

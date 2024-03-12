@@ -17,10 +17,11 @@ function a11yProps(index) {
 
 function ProductMenegment() {
   const dispatch = useDispatch();
-  const { menus, products, admin } = useSelector((state) => state);
+  const { menus } = useSelector((state) => state.menus);
+  const { admin } = useSelector((state) => state.admin);
   const [value, setValue] = useState(0);
 
-  console.log(products);
+  // console.log(products);
 
   useEffect(() => {
     getProducts();
@@ -28,7 +29,7 @@ function ProductMenegment() {
 
   function getProducts() {
     // eslint-disable-next-line react-hooks/rules-of-hooks
-    useGet(`/products?restaurant=${admin.admin?.restaurant}`)
+    useGet(`/products?restaurant=${admin?.restaurant}`)
       .then(({ data }) => {
         dispatch(setProducts(data));
       })
@@ -43,7 +44,7 @@ function ProductMenegment() {
           onChange={(e, newValue) => setValue(newValue)}
           arida-label="basic tabs example"
         >
-          {menus.menus.map((item, index) => {
+          {menus.map((item, index) => {
             return (
               <Tab
                 key={item.id}
@@ -60,7 +61,7 @@ function ProductMenegment() {
         </div>
       </div>
       <div className="flex-grow overflow-y-auto pt-10">
-        {menus.menus.map((item, index) => {
+        {menus.map((item, index) => {
           return (
             <CustomTabPanel key={item._id} index={index} value={value}>
               <ProductsByMenu menu={item} />

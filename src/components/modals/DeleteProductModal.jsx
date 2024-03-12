@@ -16,7 +16,7 @@ function DeleteProduct({ open, setOpen, id }) {
     // eslint-disable-next-line react-hooks/rules-of-hooks
     useDelete(`/products/${id}`)
       .then((e) => {
-        console.log(e);
+        // console.log(e);
         dispatch(delProduct(id));
         setLoading(false);
         setOpen(false);

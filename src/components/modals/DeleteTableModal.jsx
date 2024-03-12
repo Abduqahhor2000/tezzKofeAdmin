@@ -16,7 +16,7 @@ function DeleteTable({ open, setOpen, id }) {
     // eslint-disable-next-line react-hooks/rules-of-hooks
     useDelete(`/tables/${id}`)
       .then((e) => {
-        console.log(e);
+        // console.log(e);
         dispatch(delTable(id));
         setLoading(false);
         setOpen(false);

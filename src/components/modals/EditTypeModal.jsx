@@ -22,7 +22,7 @@ function EditType({ open, setOpen, type }) {
       name,
     })
       .then(({ data }) => {
-        console.log(data);
+        // console.log(data);
         dispatch(editType({ ...type, ...data }));
         setLoading(false);
         setOpen(false);

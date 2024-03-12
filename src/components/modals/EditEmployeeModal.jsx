@@ -36,11 +36,11 @@ function EditEmployee({ open, setOpen, employee }) {
       phone,
       firstName,
       lastName,
-      avatar: avatar ? avatar : null,
+      ...(avatar ? {avatar} : {}),
       ...(password ? { password } : {}),
     })
       .then(({ data }) => {
-        console.log(data);
+        // console.log(data);
         dispatch(editEmployee({...employee, phone, firstName, lastName, avatar}));
         setLoading(false);
         setOpen(false);

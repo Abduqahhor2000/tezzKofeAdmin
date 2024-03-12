@@ -17,7 +17,7 @@ const style = {
 };
 
 function EditProduct({ open, setOpen, product }) {
-  const { menus } = useSelector((state) => state);
+  const { menus } = useSelector((state) => state.menus);
   const dispatch = useDispatch();
 
   const [description, setDescription] = useState(product.description);
@@ -45,11 +45,11 @@ function EditProduct({ open, setOpen, product }) {
       available: true,
       unit: "ta",
     })
-      .then(({ data }) => {
-        console.log(data);
+      .then(() => {
+        // console.log(data);
         dispatch(
           editProduct({
-            ...data,
+            ...product,
             category,
             name,
             description,
@@ -96,7 +96,7 @@ function EditProduct({ open, setOpen, product }) {
                 <SelectInput
                   value={category}
                   onChange={(e) => setCategory(e.target.value)}
-                  options={menus?.menus?.map((item) => ({
+                  options={menus?.map((item) => ({
                     value: item._id,
                     label: item.name,
                   }))}

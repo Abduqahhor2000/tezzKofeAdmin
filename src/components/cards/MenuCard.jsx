@@ -11,11 +11,11 @@ function MenuCard({ item }) {
 
   function salom() {
     setEditOpen(true)
-    console.log("salom");
+    // console.log("salom");
   }
   function qalay() {
     setDelOpen(true);
-    console.log("qalay");
+    // console.log("qalay");
   }
   return (
     <>

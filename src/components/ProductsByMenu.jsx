@@ -2,12 +2,12 @@ import { useSelector } from "react-redux"
 import MealCard from "./cards/MealCard"
 
 function ProductsByMenu({menu}) {
-    const {products} = useSelector(state => state)
-    console.log(products);
+    const {products} = useSelector(state => state.products)
+    // console.log(products);
   return (
     <div className="grid 2xl:grid-cols-3 lg:grid-cols-2 grid-cols-1 gap-3">
        {
-        products.products.map((item)=>{
+        products.map((item)=>{
             if(item.category !== menu._id){
                 return null
             }

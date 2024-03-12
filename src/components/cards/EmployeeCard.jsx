@@ -8,13 +8,13 @@ import ImageDownloader from "../ImageDownloader";
 function EmployeeCard({item}) {
   const [openDel, setOpenDel] = useState(false)
   const [openEdit, setOpenEdit] = useState(false)
-  console.log(item);
+  // console.log(item);
   function salom() {
-    console.log("salom");
+    // console.log("salom");
     setOpenEdit(true)
   }
   function qalay() {
-    console.log("qalay");
+    // console.log("qalay");
     setOpenDel(true)
   }
   return (

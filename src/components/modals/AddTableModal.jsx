@@ -16,7 +16,8 @@ const style = {
 };
 
 function AddTable() {
-  const { employees, types } = useSelector((state) => state);
+  const { employees } = useSelector((state) => state?.employees);
+  const { types } = useSelector((state) => state?.types);
   const dispatch = useDispatch();
 
   const [typeOfTable, setTypeOfTable] = useState("");
@@ -46,7 +47,7 @@ function AddTable() {
       waiter: waiter && !forAll ? waiter : null,
     })
       .then(({ data }) => {
-        console.log(data);
+        // console.log(data);
         dispatch(addTable(data));
         setLoading(false);
         setOpen(false);
@@ -85,7 +86,7 @@ function AddTable() {
                   value={typeOfTable}
                   onChange={(e) => setTypeOfTable(e.target.value)}
                   label="Kategoriya"
-                  options={types?.types?.map((item) => ({
+                  options={types?.map((item) => ({
                     value: item._id,
                     label: item.name,
                   }))}
@@ -105,7 +106,7 @@ function AddTable() {
                     onChange={(e) => setWaiter(e.target.value)}
                     className="mb-2.5"
                     label="Afitsant"
-                    options={employees?.employees?.map((item) => ({
+                    options={employees?.map((item) => ({
                       value: item._id,
                       label: `${item.firstName} ${item.lastName}`,
                     }))}
