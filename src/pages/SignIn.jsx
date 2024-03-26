@@ -49,7 +49,7 @@ function SignIn() {
 
   return (
     <div className="h-screen flex flex-col">
-      <Header />
+      {/* <Header /> */}
       <div className="flex justify-center items-center flex-grow">
         <div className="w-[360px] border-gray-100 border-2 rounded-xl overflow-hidden">
           <div className="p-5">

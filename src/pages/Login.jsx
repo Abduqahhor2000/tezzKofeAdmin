@@ -26,6 +26,7 @@ function Login() {
     usePost("/auth/admin/login", { password, login })
       .then(({ data }) => {
         dispatch(putRole("imperator"))
+        localStorage.setItem("role", "imperator")
         localStorage.setItem("token", data)
         setLoading(false);
         navigate("/");
@@ -41,7 +42,7 @@ function Login() {
 
   return (
     <div className="h-screen flex flex-col">
-      <Header />
+      {/* <Header /> */}
       <div className="flex justify-center items-center flex-grow">
         <div className="w-[360px] border-gray-100 border-2 rounded-xl overflow-hidden">
           <div className="p-5">

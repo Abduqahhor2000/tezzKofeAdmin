@@ -97,7 +97,9 @@ function EditCafe({ open, setOpen, cafe }) {
                   label="Telefon"
                   required
                   subText={
-                    <span className="!text-sm !leading-5 !font-light">{`+998`}</span>
+                    <span className="flex justify-center w-[24px]">
+                    <img src="/person.svg" />
+                  </span>
                   }
                 />
                 <PasswordInput
