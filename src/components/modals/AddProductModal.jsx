@@ -51,7 +51,7 @@ function AddProduct() {
       price,
       oldPrice: price,
       sale: null,
-      available: null,
+      available: true,
       unit: "ta",
     })
       .then(({ data }) => {

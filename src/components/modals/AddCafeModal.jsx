@@ -56,7 +56,7 @@ function AddCafe() {
       name,
       address,
       location: address,
-      photo: avatar ? avatar : null,
+      ...(avatar ? {photo: avatar} : {}),
       director: { fullName, phone, password, avatar: avatar ? avatar : null },
     })
       .then(({ data }) => {

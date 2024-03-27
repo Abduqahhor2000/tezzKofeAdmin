@@ -10,7 +10,6 @@ import { LinearProgress } from "@mui/material";
 function DeleteCafe({ open, setOpen, id }) {
   const [loading, setLoading] = useState(false);
   const dispatch = useDispatch();
-
   function delCafeFunc() {
     setLoading(true);
     // eslint-disable-next-line react-hooks/rules-of-hooks

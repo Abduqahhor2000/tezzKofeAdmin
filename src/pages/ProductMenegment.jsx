@@ -29,7 +29,7 @@ function ProductMenegment() {
 
   function getProducts() {
     // eslint-disable-next-line react-hooks/rules-of-hooks
-    useGet(`/products?restaurant=${admin?.restaurant}`)
+    useGet(`/products?restaurant=${admin?.restaurant._id}`)
       .then(({ data }) => {
         dispatch(setProducts(data));
       })

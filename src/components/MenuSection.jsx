@@ -16,7 +16,7 @@ function MenuSection() {
 
   function getMenus() {
     // eslint-disable-next-line react-hooks/rules-of-hooks
-    useGet(`/categories?restaurant=${admin?.restaurant}`)
+    useGet(`/categories?restaurant=${admin?.restaurant._id}`)
       .then(({ data }) => {
         // console.log(data);
         dispatch(setMenus(data));
