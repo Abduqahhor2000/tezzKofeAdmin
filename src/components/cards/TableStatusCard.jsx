@@ -39,6 +39,7 @@ function TableStatusCard({ table }) {
     
     window.URL.revokeObjectURL(url);
   }
+  console.log(table);
 
   return (
     <>
@@ -47,7 +48,8 @@ function TableStatusCard({ table }) {
           <div className="flex items-center pb-4">
             <div
               className={`w-3 h-3 rounded-full mr-1 ${
-                table.waiter ? "bg-green-500" : "bg-red"
+                table.setWaiterByAdmin
+                 ? "bg-green-500" : "bg-red"
               }`}
             ></div>
             <div className="font-unbounded font-semibold text-xl leading-5">
@@ -56,7 +58,7 @@ function TableStatusCard({ table }) {
           </div>
 
           <div className="text-gray-400 text-sm font-SFProDisplay font-medium">
-            {table?.waiter
+            {table?.setWaiterByAdmin
               ? `${table?.waiter?.firstName} ${table?.waiter?.lastName}`
               : "Umumiy"}
           </div>
